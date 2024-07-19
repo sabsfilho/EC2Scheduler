@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EC2SchedulerLib", "EC2SchedulerLib\EC2SchedulerLib.csproj", "{27361FA7-AA39-4A42-9431-01EE785202C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EC2SchedulerFunction", "EC2SchedulerFunction", "{0F8E0D47-9C63-4A04-9A5C-B2A89534623B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A1B01BF2-8949-489E-8B8B-00D02320E17B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EC2SchedulerFunction", "EC2SchedulerFunction\src\EC2SchedulerFunction\EC2SchedulerFunction.csproj", "{3BA567C5-2379-45E6-9D78-57F950C4F450}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27361FA7-AA39-4A42-9431-01EE785202C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27361FA7-AA39-4A42-9431-01EE785202C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27361FA7-AA39-4A42-9431-01EE785202C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27361FA7-AA39-4A42-9431-01EE785202C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA567C5-2379-45E6-9D78-57F950C4F450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA567C5-2379-45E6-9D78-57F950C4F450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA567C5-2379-45E6-9D78-57F950C4F450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA567C5-2379-45E6-9D78-57F950C4F450}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1B01BF2-8949-489E-8B8B-00D02320E17B} = {0F8E0D47-9C63-4A04-9A5C-B2A89534623B}
+		{3BA567C5-2379-45E6-9D78-57F950C4F450} = {A1B01BF2-8949-489E-8B8B-00D02320E17B}
+	EndGlobalSection
+EndGlobal

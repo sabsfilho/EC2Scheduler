@@ -1,0 +1,25 @@
+mkdir EC2Scheduler
+cd EC2Scheduler
+git init -b main
+#github site create EC2Scheduler
+#command palette "open repository" copy EC2Scheduler path
+#vscode github control select EC2Scheduler and checkout
+
+dotnet new classlib -o EC2SchedulerLib
+dotnet new lambda.image.EmptyFunction --name EC2SchedulerFunction --region sa-east-1
+dotnet new gitignore
+dotnet new sln --name EC2SchedulerSln
+dotnet sln add EC2SchedulerLib/EC2SchedulerLib.csproj
+dotnet sln add EC2SchedulerFunction/src/EC2SchedulerFunction/EC2SchedulerFunction.csproj
+cd EC2SchedulerFunction/src/EC2SchedulerFunction
+dotnet add reference ../../../EC2SchedulerLib/EC2SchedulerLib.csproj
+dotnet add package AWSSDK.EC2
+
+aws iam create-role --role-name EC2SchedulerRole --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
+aws iam attach-role-policy --role-name EC2SchedulerRole --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+must include in aws-lambda-tools-defaults.json
+  "function-architecture": "arm64",
+
+dotnet lambda deploy-function EC2SchedulerFunction --function-role EC2SchedulerRole
+
