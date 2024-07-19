@@ -11,6 +11,7 @@ public static class Control
     internal const string SCHEDULER_REQUESTED_BY_USER = "SchedulerRequestedByUser";
     internal const string SCHEDULER_KEY_START = "SchedulerStart";
     internal const string SCHEDULER_KEY_FINISH = "SchedulerFinish";
+    internal const string SCHEDULER_KEY_IMAGE = "SchedulerImage";
     internal const int SCHEDULER_DEFAULT_DURATION_HOURS = 10;
     /*
     input = SchedulerRequest

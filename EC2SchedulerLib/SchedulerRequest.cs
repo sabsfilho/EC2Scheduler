@@ -8,6 +8,7 @@ public class SchedulerRequest
     public required string User { get; set; }
     public string? ParamA { get; set; }
     public string? ParamB { get; set; }
+    public string? ParamC { get; set; }
 
     public string Run()
     {
@@ -30,8 +31,23 @@ public class SchedulerRequest
             case ActionEnum.ListImages:
                 trigger = new ListImagesTrigger();
                 break;
+            case ActionEnum.CreateImage:
+                trigger = new CreateImageTrigger();
+                break;
+            case ActionEnum.DeleteImage:
+                trigger = new DeleteImageTrigger();
+                break;
             case ActionEnum.CreateInstanceFromImage:
                 trigger = new CreateInstanceFromImageTrigger();
+                break;
+            case ActionEnum.TerminateInstance:
+                trigger = new TerminateInstanceTrigger();
+                break;
+            case ActionEnum.MonitorWebServices:
+                trigger = new MonitorWebServicesTrigger();
+                break;
+            case ActionEnum.SyncronizeBacktestImage:
+                trigger = new SyncronizeBacktestImageTrigger();
                 break;
             default:
                 throw new Exception($"not implemented {Action}");

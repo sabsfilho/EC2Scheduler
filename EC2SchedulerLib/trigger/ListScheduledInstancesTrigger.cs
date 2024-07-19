@@ -16,8 +16,15 @@ class ListScheduledInstancesTrigger : ATrigger
         var instanceDescriptions = new List<InstanceDescription>();
 
         var request = new DescribeInstancesRequest();
-        request.Filters.Add(new Filter(Control.SCHEDULER_REQUESTED_BY_USER));
-        request.Filters.Add(new Filter(Control.SCHEDULER_KEY_START));
+        request.Filters.Add(
+            new Filter(
+                "tag-key",
+                new List<string>(){
+                Control.SCHEDULER_REQUESTED_BY_USER,
+                Control.SCHEDULER_KEY_START
+                }
+            )
+        );
 
         var t = EC2Client.DescribeInstancesAsync(request);
         t.Wait();
