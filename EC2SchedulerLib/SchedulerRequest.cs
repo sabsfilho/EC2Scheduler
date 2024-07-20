@@ -51,6 +51,9 @@ public class SchedulerRequest
             case ActionEnum.SyncronizeBacktestImage:
                 trigger = new SyncronizeBacktestImageTrigger();
                 break;
+            case ActionEnum.RemoveScheduledTag:
+                trigger = new RemoveScheduledTagTrigger();
+                break;
             default:
                 throw new Exception($"not implemented {Action}");
         }

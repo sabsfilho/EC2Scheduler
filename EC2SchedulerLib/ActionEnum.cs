@@ -13,5 +13,6 @@ public enum ActionEnum
     CreateInstanceFromImage,
     TerminateInstance,
     MonitorWebServices,
-    SyncronizeBacktestImage
+    SyncronizeBacktestImage,
+    RemoveScheduledTag
 }

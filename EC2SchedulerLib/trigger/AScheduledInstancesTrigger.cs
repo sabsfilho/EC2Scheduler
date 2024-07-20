@@ -42,14 +42,7 @@ abstract class AScheduledInstancesTrigger : ListScheduledInstancesTrigger
     }
     protected override string RunRequest()
     {
-        if (!DateTime.Now.IsWorkdayInBrazil()) return "nok";
-
-        var ids = 
-            BuildList()
-            .Select(x => x.InstanceId)
-            .ToList();
-
-        if (ids.Count == 0) return "nok";
+       // if (!DateTime.Now.IsWorkdayInBrazil()) return "nok";
 
         bool b = RunCommand(BuildList());
         
