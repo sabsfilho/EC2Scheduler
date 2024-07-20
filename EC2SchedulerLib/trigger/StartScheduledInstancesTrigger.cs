@@ -3,31 +3,29 @@ using HelperLib;
 
 namespace EC2SchedulerLib.trigger;
 
-class StartScheduledInstancesTrigger : ListScheduledInstancesTrigger
+class StartScheduledInstancesTrigger : AScheduledInstancesTrigger
 {
-    protected override bool CheckInstance(Instance y)
+    protected override string GetKeyTimer()
     {
-        return (y.State.Code & 255 ) == 80;
+        return Control.SCHEDULER_KEY_START;
     }
-    protected override string RunRequest()
+    protected override bool HasState(int code)
     {
-        if (!DateTime.Now.IsWorkdayInBrazil()) return "nok";
-
-        var ids = 
-            BuildList()
-            .Select(x => x.InstanceId)
-            .ToList();
-
-        if (ids.Count == 0) return "nok";
-
+        return code == 80 /* stopped */; 
+    }
+    protected override bool RunCommand(List<InstanceDescription> descriptions)
+    {
         var request = new StartInstancesRequest()
         {
-            InstanceIds = ids
+            InstanceIds = 
+                descriptions
+                .Select(x => x.InstanceId)
+                .ToList()
         };
 
         var t = EC2Client.StartInstancesAsync(request);
         t.Wait();
-        
-        return "ok";
+
+        return true;
     }
 }

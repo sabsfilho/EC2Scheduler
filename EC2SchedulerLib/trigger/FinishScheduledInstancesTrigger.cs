@@ -3,25 +3,22 @@ using HelperLib;
 
 namespace EC2SchedulerLib.trigger;
 
-class FinishScheduledInstancesTrigger : ListScheduledInstancesTrigger
+class FinishScheduledInstancesTrigger : AScheduledInstancesTrigger
 {
-    protected override bool CheckInstance(Instance y)
+    protected override string GetKeyTimer()
     {
-        return (y.State.Code & 255 ) == 16;
+        return Control.SCHEDULER_KEY_FINISH;
     }
-    protected override string RunRequest()
+    protected override bool HasState(int code)
     {
-        if (!DateTime.Now.IsWorkdayInBrazil()) return "nok";
-
-        var xs = 
-            BuildList();
-
-        if (xs.Count == 0) return "nok";
-
+        return code == 16 /* running */; 
+    }
+    protected override bool RunCommand(List<InstanceDescription> descriptions)
+    {
         var stops = new List<string>();
         var terms = new List<string>();
 
-        foreach(var x in xs)
+        foreach(var x in descriptions)
         {
             if (string.IsNullOrEmpty(x.User)){
                 stops.Add(x.InstanceId);
@@ -52,7 +49,7 @@ class FinishScheduledInstancesTrigger : ListScheduledInstancesTrigger
             var t = EC2Client.TerminateInstancesAsync(request);
             t.Wait();
         }
-        
-        return "ok";
+
+        return true;
     }
 }
