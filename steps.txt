@@ -6,14 +6,22 @@ git init -b main
 #vscode github control select EC2Scheduler and checkout
 
 dotnet new classlib -o EC2SchedulerLib
+dotnet new console -o EC2SchedulerApp
 dotnet new lambda.image.EmptyFunction --name EC2SchedulerFunction --region sa-east-1
 dotnet new gitignore
 dotnet new sln --name EC2SchedulerSln
 dotnet sln add EC2SchedulerLib/EC2SchedulerLib.csproj
+dotnet sln add EC2SchedulerApp/EC2SchedulerApp.csproj
 dotnet sln add EC2SchedulerFunction/src/EC2SchedulerFunction/EC2SchedulerFunction.csproj
+cd EC2SchedulerLib
+dotnet add package AWSSDK.EC2
+cd ..
+cd EC2SchedulerApp
+dotnet add reference ../EC2SchedulerLib/EC2SchedulerLib.csproj
+cd..
 cd EC2SchedulerFunction/src/EC2SchedulerFunction
 dotnet add reference ../../../EC2SchedulerLib/EC2SchedulerLib.csproj
-dotnet add package AWSSDK.EC2
+
 
 aws iam create-role --role-name EC2SchedulerRole --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
 aws iam attach-role-policy --role-name EC2SchedulerRole --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole

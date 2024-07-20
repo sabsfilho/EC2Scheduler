@@ -16,6 +16,8 @@ public class SchedulerRequest
 
         switch(Action)
         {
+            case ActionEnum.UNDEFINED:
+                return $"Action: UNDEFINED, User: {User}";
             case ActionEnum.UpdateScheduledInstance:
                 trigger = new UpdateScheduledInstanceTrigger();
                 break;

@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A1B01BF2-894
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EC2SchedulerFunction", "EC2SchedulerFunction\src\EC2SchedulerFunction\EC2SchedulerFunction.csproj", "{3BA567C5-2379-45E6-9D78-57F950C4F450}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EC2SchedulerApp", "EC2SchedulerApp\EC2SchedulerApp.csproj", "{83A2F34D-0130-485F-BD74-6DCDC7D41184}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{3BA567C5-2379-45E6-9D78-57F950C4F450}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BA567C5-2379-45E6-9D78-57F950C4F450}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BA567C5-2379-45E6-9D78-57F950C4F450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83A2F34D-0130-485F-BD74-6DCDC7D41184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A2F34D-0130-485F-BD74-6DCDC7D41184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83A2F34D-0130-485F-BD74-6DCDC7D41184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83A2F34D-0130-485F-BD74-6DCDC7D41184}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A1B01BF2-8949-489E-8B8B-00D02320E17B} = {0F8E0D47-9C63-4A04-9A5C-B2A89534623B}
