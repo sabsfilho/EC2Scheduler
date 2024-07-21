@@ -3,6 +3,7 @@ namespace EC2SchedulerLib.trigger;
 class InstanceDescription
 {
     public required string InstanceId { get; set; }
+    public required string ImageId { get; set; }    
     public required string Name { get; set; }
     public required string PrivateIP { get; set; }
     public required string PublicIP { get; set; }

@@ -20,8 +20,9 @@ class ListScheduledInstancesTrigger : ATrigger
             new Filter(
                 "tag-key",
                 new List<string>(){
-                Control.SCHEDULER_REQUESTED_BY_USER,
-                Control.SCHEDULER_KEY_START
+                    Control.SCHEDULER_REQUESTED_BY_USER,
+                    Control.SCHEDULER_KEY_START,
+                    Control.SCHEDULER_KEY_FINISH
                 }
             )
         );
@@ -40,9 +41,10 @@ class ListScheduledInstancesTrigger : ATrigger
                 var d = new InstanceDescription()
                 {
                     InstanceId = y.InstanceId,
+                    ImageId = y.ImageId,
                     InstanceType = y.InstanceType.Value,                                        
-                    Lifecycle = y.InstanceLifecycle.Value,
-                    Name = "y.Tags",
+                    Lifecycle = y.InstanceLifecycle == null ? "on-demand" : y.InstanceLifecycle.Value,
+                    Name = GetName(y),
                     PrivateIP = y.PrivateIpAddress,
                     PublicIP = y.PublicIpAddress,
                     Started = y.LaunchTime.ToString("dd/MM/yyyy HH:mm:ss"),
@@ -73,6 +75,13 @@ class ListScheduledInstancesTrigger : ATrigger
         return 
             instanceDescriptions;
         
+    }
+
+    private string GetName(Instance y)
+    {
+        var t = y.Tags.FirstOrDefault(x => x.Key == "Name");
+        if (t == null) return "-";
+        return t.Value;
     }
 
     protected override string RunRequest()

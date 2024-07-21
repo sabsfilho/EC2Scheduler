@@ -44,8 +44,14 @@ abstract class AScheduledInstancesTrigger : ListScheduledInstancesTrigger
     {
        // if (!DateTime.Now.IsWorkdayInBrazil()) return "nok";
 
-        bool b = RunCommand(BuildList());
-        
+        var lst = BuildList();
+
+        bool b = lst.Count > 0;
+
+        if (b) 
+        {
+            b = RunCommand(lst);
+        }
         return b ? "ok" : "nok";
     }
 }

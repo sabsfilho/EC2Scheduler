@@ -27,7 +27,7 @@ abstract class ATrigger
     public string Run(SchedulerRequest r)
     {
         SchedulerRequest = r;
-        RunRequest();
-        return "ok";
+        return
+            RunRequest();
     }
 }
