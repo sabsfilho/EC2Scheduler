@@ -21,6 +21,7 @@ class DeleteImageTrigger : ATrigger
             var dir = new DeregisterImageRequest(){
                 ImageId = img.ImageId
             };
+            
             var tdir = EC2Client.DeregisterImageAsync(dir);
             tdir.Wait();
             if (tdir.Result.HttpStatusCode != System.Net.HttpStatusCode.OK)
@@ -29,17 +30,9 @@ class DeleteImageTrigger : ATrigger
             }
             var blockMap = img.BlockDeviceMappings.FirstOrDefault();
             if (blockMap == null) continue;
-            string snapshotId = blockMap.DeviceName;
-            if (string.IsNullOrEmpty(snapshotId)) continue;
-            int i1 = snapshotId.IndexOf('=');
-            if (i1 == -1) continue;
-            i1++;
-            int i2 = snapshotId.IndexOf(':', i1);
-            if (i2 == -1) continue;
-            snapshotId = snapshotId.Substring(i1, i2 - i1);
 
             var requestSnapshot = new DeleteSnapshotRequest(){
-                SnapshotId = snapshotId
+                SnapshotId = blockMap.Ebs.SnapshotId
             };
             var dsnap = EC2Client.DeleteSnapshotAsync(requestSnapshot);
             dsnap.Wait();

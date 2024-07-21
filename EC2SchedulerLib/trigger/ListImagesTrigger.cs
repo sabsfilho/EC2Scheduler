@@ -14,7 +14,7 @@ class ListImagesTrigger : ATrigger
             new Filter(
                 "tag-key",
                 new List<string>(){
-                Control.SCHEDULER_KEY_IMAGE
+                    Control.SCHEDULER_KEY_IMAGE
                 }
             )
         );
