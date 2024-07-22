@@ -13,12 +13,10 @@ SchedulerRequest r = new SchedulerRequest(){
     User = "test"
 };
 
-SetUseCaseParams(r, 9);
-
+// SetUseCaseParams(r, 9);
+ 
 string input = JsonSerializer.Serialize(r);
-
 Console.WriteLine(input);
-
 string txt = Control.Run(input);
 Console.WriteLine(txt);
 

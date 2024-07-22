@@ -31,6 +31,7 @@ public static class Control
     ParamB = auxiliary parameter B
     ParamC = auxiliary parameter C
 
+{"Action":0,"User":"test","ParamA":null,"ParamB":null,"ParamC":null}
     */
     public static string Run(string input)
     {

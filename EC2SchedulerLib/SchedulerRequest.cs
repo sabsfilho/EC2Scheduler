@@ -1,4 +1,5 @@
 using EC2SchedulerLib.trigger;
+using HelperLib;
 
 namespace EC2SchedulerLib;
 
@@ -17,7 +18,7 @@ public class SchedulerRequest
         switch(Action)
         {
             case ActionEnum.UNDEFINED:
-                return $"Action: UNDEFINED, User: {User}";
+                return $"Action: UNDEFINED, User: {User}, Date: {DateTime.Now.ToStringHelperDDMMYYYYHHMMSS()}";
             case ActionEnum.UpdateScheduledInstance:
                 trigger = new UpdateScheduledInstanceTrigger();
                 break;
