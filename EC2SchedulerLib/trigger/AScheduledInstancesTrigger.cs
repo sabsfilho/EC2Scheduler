@@ -42,9 +42,14 @@ abstract class AScheduledInstancesTrigger : ListScheduledInstancesTrigger
     }
     protected override string RunRequest()
     {
-       // if (!DateTime.Now.IsWorkdayInBrazil()) return "nok";
+        if (!DateTime.Now.IsWorkdayInBrazil()) {
+            SchedulerRequest.AddLog("NOT WorkdayInBrazil");
+            return "nok";
+        }
 
         var lst = BuildList();
+
+        SchedulerRequest.AddLog($"list count: {lst.Count}");
 
         bool b = lst.Count > 0;
 

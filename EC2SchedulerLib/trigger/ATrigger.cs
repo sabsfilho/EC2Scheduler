@@ -26,6 +26,7 @@ abstract class ATrigger
     }
     public string Run(SchedulerRequest r)
     {
+        r.AddLog(GetType().Name);
         SchedulerRequest = r;
         return
             RunRequest();

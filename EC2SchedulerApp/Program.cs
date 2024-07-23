@@ -13,7 +13,7 @@ SchedulerRequest r = new SchedulerRequest(){
     User = "test"
 };
 
-// SetUseCaseParams(r, 9);
+ SetUseCaseParams(r, 10);
  
 string input = JsonSerializer.Serialize(r);
 Console.WriteLine(input);
@@ -63,6 +63,9 @@ static void SetUseCaseParams(SchedulerRequest r, int useCaseId)
         case 9:
             r.Action = ActionEnum.DeleteImage;
             r.ParamA = AMI_ID;
+            break;    
+        case 10:
+            r.Action = ActionEnum.RunAllServices;
             break;            
     }
 

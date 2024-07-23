@@ -4,6 +4,6 @@ class SyncronizeBacktestImageTrigger : ATrigger
 {
     protected override string RunRequest()
     {
-        throw new NotImplementedException();
+        return "not implemented";
     }
 }

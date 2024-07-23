@@ -17,6 +17,8 @@ class CreateImageTrigger : ATrigger
 
         string name = $"{key}_{DateTime.Now.ToString("yyyyMMdd_hhmmss")}";
 
+        SchedulerRequest.AddLog($"create image {name}");
+
         var request = new CreateImageRequest(){
             InstanceId = id,
             Name = name,

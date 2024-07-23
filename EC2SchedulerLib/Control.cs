@@ -26,7 +26,8 @@ public static class Control
         DeleteImage,
         CreateInstanceFromImage,
         TerminateInstance,
-        MonitorWebServices
+        MonitorWebServices,
+        RunAllServices
     ParamA = auxiliary parameter A
     ParamB = auxiliary parameter B
     ParamC = auxiliary parameter C
