@@ -27,8 +27,14 @@ abstract class ATrigger
     public string Run(SchedulerRequest r)
     {
         r.AddLog(GetType().Name);
+
         SchedulerRequest = r;
-        return
+        
+        string txt =
             RunRequest();
+        
+        r.AddLog($"rtn: ${txt}");
+
+        return txt;
     }
 }

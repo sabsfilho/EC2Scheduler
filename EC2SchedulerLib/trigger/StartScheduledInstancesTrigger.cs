@@ -15,16 +15,23 @@ class StartScheduledInstancesTrigger : AScheduledInstancesTrigger
     }
     protected override bool RunCommand(List<InstanceDescription> descriptions)
     {
-        var request = new StartInstancesRequest()
-        {
-            InstanceIds = 
+        var ids =  
                 descriptions
                 .Select(x => x.InstanceId)
-                .ToList()
+                .ToList();
+        var request = new StartInstancesRequest()
+        {
+            InstanceIds = ids
         };
 
         var t = EC2Client.StartInstancesAsync(request);
         t.Wait();
+
+        SchedulerRequest.AddLog(
+            string.Join(",",
+                ids
+            )
+        );
 
         return true;
     }

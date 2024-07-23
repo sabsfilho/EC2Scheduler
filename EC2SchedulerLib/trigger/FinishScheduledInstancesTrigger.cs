@@ -37,19 +37,31 @@ class FinishScheduledInstancesTrigger : AScheduledInstancesTrigger
 
             var t = EC2Client.StopInstancesAsync(request);
             t.Wait();
+            AddLog(stops);
         }
 
         if (terms.Count > 0) {
 
             var request = new TerminateInstancesRequest()
             {
-                InstanceIds = stops
+                InstanceIds = terms
             };
 
             var t = EC2Client.TerminateInstancesAsync(request);
             t.Wait();
+            AddLog(terms);
         }
 
         return true;
+    }
+    void AddLog(List<string>? lst)
+    {
+        if (lst == null) return;
+
+        SchedulerRequest.AddLog(
+            string.Join(",",
+                lst
+            )
+        );
     }
 }

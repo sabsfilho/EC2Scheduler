@@ -2,19 +2,32 @@ using Amazon.EC2;
 using Amazon.EC2.Model;
 
 namespace EC2SchedulerLib.trigger;
+/*
+ParamA = ImageID,
+ParamB = INSTANCE_TYPE or Control.INSTANCE_TYPE if null
+*/
 class CreateInstanceFromImageTrigger : ATrigger
 {
     protected override string RunRequest()
     {
+        string? imageID = SchedulerRequest.ParamA;
+        if (string.IsNullOrEmpty(imageID)) {
+            throw new Exception("ImageID must be defined in ParamA.");
+        }
+
         var request = new RunInstancesRequest()
         {
-            InstanceType = (InstanceType) Enum.Parse(typeof(InstanceType), Control.INSTANCE_TYPE),
+            InstanceType = 
+                new InstanceType(
+                    SchedulerRequest.ParamB ?? Control.INSTANCE_TYPE
+                ),
             MinCount = 1,
             MaxCount = 1,
-            ImageId = SchedulerRequest.ParamA,
+            ImageId = imageID,
             KeyName = Control.KEY_PAIR_NAME      
         };
         request.TagSpecifications.Add(new TagSpecification(){
+            ResourceType = ResourceType.Instance,
             Tags = new List<Tag>(){
                 new Tag(Control.SCHEDULER_REQUESTED_BY_USER, SchedulerRequest.User),
                 new Tag(
@@ -37,10 +50,11 @@ class CreateInstanceFromImageTrigger : ATrigger
                 }
             };
         
-        EC2Client.RunInstancesAsync(request);
+        var t = EC2Client.RunInstancesAsync(request);
+        t.Wait();
 
         Thread.Sleep(1000);
 
-        return "ok";
+        return t.Result.Reservation.Instances.First().InstanceId;
     }
 }

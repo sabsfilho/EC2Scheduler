@@ -7,7 +7,7 @@ public static class Control
     internal const string KEY_PAIR_NAME = "PutCallSP";
     internal const string SUBNET_ID = "subnet-22814f47";
     internal const string SECURITY_GROUP_ID = "sg-63587e05";
-    internal const string INSTANCE_TYPE = "T3Medium";
+    internal const string INSTANCE_TYPE = "t3.medium";
     internal const string SCHEDULER_REQUESTED_BY_USER = "SchedulerRequestedByUser";
     internal const string SCHEDULER_KEY_START = "SchedulerStart";
     internal const string SCHEDULER_KEY_FINISH = "SchedulerFinish";
