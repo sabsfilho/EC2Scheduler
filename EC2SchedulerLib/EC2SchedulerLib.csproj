@@ -6,13 +6,23 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AWSLib">
+      <HintPath>..\lib\AWSLib.dll</HintPath>
+    </Reference>
     <Reference Include="HelperLib">
       <HintPath>..\lib\HelperLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ModelLib">
+      <HintPath>..\lib\ModelLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AWSSDK.EC2" Version="3.7.335" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.7.310" />
   </ItemGroup>
 
 </Project>

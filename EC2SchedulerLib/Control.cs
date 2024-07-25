@@ -4,6 +4,7 @@ namespace EC2SchedulerLib;
 
 public static class Control
 {
+    internal const string BUCKET_NAME_PCB_LIB = "pcb-lib";
     internal const string KEY_PAIR_NAME = "PutCallSP";
     internal const string SUBNET_ID = "subnet-22814f47";
     internal const string SECURITY_GROUP_ID = "sg-63587e05";

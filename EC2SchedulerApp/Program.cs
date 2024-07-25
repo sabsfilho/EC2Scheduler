@@ -5,7 +5,7 @@ using EC2SchedulerLib;
 Console.WriteLine("running...");
 
 // const string INSTANCE_ID = "i-02e0b8a91c28d8147";
-const string INSTANCE_ID = "i-02e0b8a91c28d8147";
+const string INSTANCE_ID = "i-04f1b55015d8d732a";
 
 const string AMI_ID = "ami-0339304a74bdc32b9";
 
@@ -14,7 +14,7 @@ SchedulerRequest r = new SchedulerRequest(){
     User = "test"
 };
 
- SetUseCaseParams(r, 11);
+ SetUseCaseParams(r, 13);
  
 string input = JsonSerializer.Serialize(r);
 Console.WriteLine(input);
@@ -71,6 +71,13 @@ static void SetUseCaseParams(SchedulerRequest r, int useCaseId)
         case 11:
             r.Action = ActionEnum.CreateInstanceFromImage;
             r.ParamA = AMI_ID;
+            break;
+        case 12:
+            r.Action = ActionEnum.TerminateInstance;
+            r.ParamA = INSTANCE_ID;
+            break;
+        case 13:
+            r.Action = ActionEnum.MonitorWebServices;
             break;
     }
 
