@@ -16,3 +16,21 @@ I wrote an all-in-one guide to help me and my colleagues to create a straightfor
 
 As this project consumes AWS cloud resources, it is fundamental to install **AWS CLI** and tools. The AWS credentials must also be set. If you need help on this environment configuration, I really recommend reading this all-in-one guide.
 
+Implemented Services:
+ListScheduledInstances,
+UpdateScheduledInstances,
+DeleteScheduledInstances,
+StartScheduledInstances,
+FinishScheduledInstances,
+ListImages,
+CreateImage,
+DeleteImage,
+CreateInstanceFromImage,
+TerminateInstance,
+MonitorWebServices,
+RunAllServices
+
+Complimentary Parameters:
+ParamA = auxiliary parameter A
+ParamB = auxiliary parameter B
+ParamC = auxiliary parameter C
