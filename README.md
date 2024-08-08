@@ -16,6 +16,8 @@ I wrote an all-in-one guide to help me and my colleagues to create a straightfor
 
 As this project consumes AWS cloud resources, it is fundamental to install **AWS CLI** and tools. The AWS credentials must also be set. If you need help on this environment configuration, I really recommend reading this all-in-one guide.
 
+**__document under construction__**
+
 Implemented Services:
 ListScheduledInstances,
 UpdateScheduledInstances,
