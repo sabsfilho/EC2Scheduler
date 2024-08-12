@@ -14,25 +14,33 @@ This project is also used as the Backend module by a Frontend .NET8 project, whi
 
 I wrote an all-in-one guide to help me and my colleagues to create a straightforward walk through to create a boilerplate for AWS Lambda Serverless Function from Zero to Hero. using the cost effective Graviton Arm64 processor from a VS Code Docker In Docker Dev Container running on Linux/Ubuntu EC2 Instance. [Click here and check it out!](https://www.linkedin.com/pulse/publish-net-8-microservice-aws-lambda-function-using-cost-santos-vsiqe)
 
-As this project consumes AWS cloud resources, it is fundamental to install **AWS CLI** and tools. The AWS credentials must also be set. If you need help on this environment configuration, I really recommend reading this all-in-one guide.
+As this project consumes AWS cloud resources, it is fundamental to install **AWS CLI** and related tools. The AWS credentials must also be set. If you need help on this environment configuration, I really recommend reading this all-in-one guide I mentioned before.
+
+__Implemented Services__<br/>
+ListScheduledInstances: Return a List <br/>
+UpdateScheduledInstances:<br/>
+DeleteScheduledInstances:<br/>
+StartScheduledInstances:<br/>
+FinishScheduledInstances:<br/>
+ListImages:<br/>
+CreateImage:<br/>
+DeleteImage:<br/>
+CreateInstanceFromImage:<br/>
+TerminateInstance:<br/>
+MonitorWebServices:<br/>
+RunAllServices:<br/>
+
+Complimentary Parameters:<br/>
+ParamA = auxiliary parameter A<br/>
+ParamB = auxiliary parameter B<br/>
+ParamC = auxiliary parameter C<br/>
+
+__Project structure__<br/>
+EC2SchedulerApp: .NET 8 Console application that consumes EC2SchedulerLib. Another convenient way to use the implemented procedures executing Command Line commands.<br/>
+EC2SchedulerLib: .NET 8 Library having the implemented procedures as described above<br/>
+EC2SchedulerFunction: .NET 8 AWS Lambda Function that consumes EC2SchedulerLib.<br/>
+EC2SchedulerFunction/src: .NET 8 AWS Lambda Function implementation to be published as a Docker container to AWS cloud.<br/>
+EC2SchedulerFunction/test: .NET 8 Unit Tests to be evaluated in the build process.<br/>
 
 **__document under construction__**
 
-Implemented Services:
-ListScheduledInstances,
-UpdateScheduledInstances,
-DeleteScheduledInstances,
-StartScheduledInstances,
-FinishScheduledInstances,
-ListImages,
-CreateImage,
-DeleteImage,
-CreateInstanceFromImage,
-TerminateInstance,
-MonitorWebServices,
-RunAllServices
-
-Complimentary Parameters:
-ParamA = auxiliary parameter A
-ParamB = auxiliary parameter B
-ParamC = auxiliary parameter C
