@@ -17,18 +17,17 @@ I wrote an all-in-one guide to help me and my colleagues to create a straightfor
 As this project consumes AWS cloud resources, it is fundamental to install **AWS CLI** and related tools. The AWS credentials must also be set. If you need help on this environment configuration, I really recommend reading this all-in-one guide I mentioned before.
 
 __Implemented Services__<br/>
-ListScheduledInstances: Return a List <br/>
-UpdateScheduledInstances:<br/>
-DeleteScheduledInstances:<br/>
-StartScheduledInstances:<br/>
-FinishScheduledInstances:<br/>
-ListImages:<br/>
-CreateImage:<br/>
-DeleteImage:<br/>
-CreateInstanceFromImage:<br/>
-TerminateInstance:<br/>
-MonitorWebServices:<br/>
-RunAllServices:<br/>
+__ListScheduledInstances__: Return a JSON List having the description of EC2 Instances filtered by Tags: Control.SCHEDULER_REQUESTED_BY_USER, Control.SCHEDULER_KEY_START, Control.SCHEDULER_KEY_FINISH<br/>
+__UpdateScheduledInstances__: Set/Update Instance Tag from InstanceId in ParamA, TagName in ParamB and TagValue in ParamC<br/>
+__StartScheduledInstances__: Start Instances using the time definition from Tag Control.SCHEDULER_KEY_START<br/>
+__FinishScheduledInstances__: Finish Instances using the time definition from Tag Control.SCHEDULER_KEY_FINISH<br/>
+__ListImages__: Return a JSON List tagged with Control.SCHEDULER_KEY_IMAGE<br/>
+__CreateImage__: Create Image from InstanceId in ParamA having its name defined as the Key in ParamB and current DateTime formatted as yyyyMMdd_hhmmss<br/>
+__DeleteImage__: Delete Images and related Snapshots from ImageIds in ParamA<br/>
+__CreateInstanceFromImage__: Create Instance from ImageID in ParamA, InstanceType in SchedulerRequest.ParamB (Control.INSTANCE_TYPE is default) and using Control.KEY_PAIR_NAME, Control.SCHEDULER_REQUESTED_BY_USER, Control.SCHEDULER_DEFAULT_DURATION_HOURS, Control.SUBNET_ID, Control.SECURITY_GROUP_ID. Return the created InstanceId.<br/>
+__TerminateInstance__: Terminate Instance from InstanceIds in ParamA<br/>
+__MonitorWebServices__: Monitor services from Control.BUCKET_NAME_PCB_LIB file are running. If not, send alert message to administrators. <br/>
+__RunAllServices__: Trigger Cron jobs and maintenance services<br/>
 
 Complimentary Parameters:<br/>
 ParamA = auxiliary parameter A<br/>
@@ -36,11 +35,11 @@ ParamB = auxiliary parameter B<br/>
 ParamC = auxiliary parameter C<br/>
 
 __Project structure__<br/>
-EC2SchedulerApp: .NET 8 Console application that consumes EC2SchedulerLib. Another convenient way to use the implemented procedures executing Command Line commands.<br/>
-EC2SchedulerLib: .NET 8 Library having the implemented procedures as described above<br/>
-EC2SchedulerFunction: .NET 8 AWS Lambda Function that consumes EC2SchedulerLib.<br/>
-EC2SchedulerFunction/src: .NET 8 AWS Lambda Function implementation to be published as a Docker container to AWS cloud.<br/>
-EC2SchedulerFunction/test: .NET 8 Unit Tests to be evaluated in the build process.<br/>
+__EC2SchedulerApp__: .NET 8 Console application that consumes EC2SchedulerLib. Another convenient way to use the implemented procedures executing Command Line commands.<br/>
+__EC2SchedulerLib__: .NET 8 Library having the implemented procedures as described above<br/>
+__EC2SchedulerFunction__: .NET 8 AWS Lambda Function that consumes EC2SchedulerLib.<br/>
+__EC2SchedulerFunction/src__: .NET 8 AWS Lambda Function implementation to be published as a Docker container to AWS cloud.<br/>
+__EC2SchedulerFunction/test__: .NET 8 Unit Tests to be evaluated in the build process.<br/>
 
 **__document under construction__**
 
