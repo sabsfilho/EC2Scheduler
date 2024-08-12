@@ -3,7 +3,7 @@
 
 This is a AWS Lambda Function microservice .NET 8 project.
 
-*This project is a small piece of a broader brownfield project. I am responsible to modernize our .NET Framework ecosystem from a monolithic architecture based in Virtual Machines to a Service Oriented Architecture using AWS technologies.*
+*This project is a small piece of a broader brownfield project. I am responsible for modernizing our .NET Framework ecosystem from a monolithic architecture based in Virtual Machines to a Service Oriented Architecture using AWS technologies.*
 
 The purpose of this microservice is to control **AWS Elastic Compute Cloud EC2** resources, executing Scheduled Tasks or **Cron Jobs**.
 
