@@ -34,6 +34,9 @@ ParamA = auxiliary parameter A<br/>
 ParamB = auxiliary parameter B<br/>
 ParamC = auxiliary parameter C<br/>
 
+Payload example:<br/>
+{"Action":"ListScheduledInstances","User":"test","ParamA":null,"ParamB":null,"ParamC":null}
+
 __Project structure__<br/>
 __EC2SchedulerApp__: .NET 8 Console application that consumes EC2SchedulerLib. Another convenient way to use the implemented procedures executing Command Line commands.<br/>
 __EC2SchedulerLib__: .NET 8 Library having the implemented procedures as described above<br/>
